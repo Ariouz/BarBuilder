@@ -123,18 +123,15 @@ public class BarBuilder {
      */
 
     public String build(){
-        this.percent /= 100;
+        this.percent = this.percent/100;
 
         long completed = Math.round(this.sizeOfBar*this.percent);
 
         StringBuilder build = new StringBuilder();
+        build.append(this.full);
 
-        for(int i = 0; i < completed; i++){
-            build.append(this.full).append(this.caracter);
-        }
-
-        for(int j = (int) completed; j < this.sizeOfBar; j++){
-            build.append(this.empty).append(this.caracter);
+        for(int i = 0; i < sizeOfBar; i++){
+            build.append(i == completed ? this.empty : "").append(this.caracter);
         }
 
         return build.toString();
