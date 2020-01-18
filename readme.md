@@ -15,7 +15,7 @@ Initialize it with the bar you want. For me, I want a bar that shows 12% with 50
 
     myXpBar = new BarBuilder(12, 50).build;
     
-It will make this: ![Image of result](https://raw.githubusercontent.com/Ariouz/BarBuilder/master/Screenshot_1.png)
+It will make this: ![Image of result](https://raw.githubusercontent.com/Ariouz/BarBuilder/master/imgs/1.png)
     
 Don't forget to use build() methods at the end.
 You can also change the colors, the caracter, the size of bar.
@@ -32,5 +32,8 @@ If you want to customize you bar, you can change the colors, the size of the baa
 This methods will change the greens bars to another color, exemple in code:
 
     myXpBar = new BarBuilder(12, 50).setFullColor(ChatColor.BLUE).build;
+The bar is now this: ![Image of result](https://raw.githubusercontent.com/Ariouz/BarBuilder/master/imgs/1.png)
+
+
 
 **Enjoy my class, if you have any request or idea ask me.
