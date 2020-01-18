@@ -123,7 +123,7 @@ public class BarBuilder {
      */
 
     public String build(){
-        this.percent = this.percent/100;
+        this.percent /= 100;
 
         long completed = Math.round(this.sizeOfBar*this.percent);
 
