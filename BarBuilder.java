@@ -82,8 +82,9 @@ public class BarBuilder {
      * @param color
      */
 
-    public void setFullColor(ChatColor color){
+    public BarBuilder setFullColor(ChatColor color){
         this.full = color;
+        return this;
     }
 
     /**
@@ -91,8 +92,9 @@ public class BarBuilder {
      * @param color
      */
 
-    public void setEmptyColor(ChatColor color){
+    public BarBuilder setEmptyColor(ChatColor color){
         this.empty = color;
+        return this;
     }
 
     /**
@@ -100,8 +102,9 @@ public class BarBuilder {
      * @param size
      */
 
-    public void setSize(int size){
+    public BarBuilder setSize(int size){
         this.sizeOfBar = size;
+        return this;
     }
 
     /**
@@ -109,8 +112,9 @@ public class BarBuilder {
      * @param caracter
      */
 
-    public void setCaracter(char caracter){
+    public BarBuilder setCaracter(char caracter){
         this.caracter = caracter;
+        return this;
     }
 
     /**
