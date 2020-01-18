@@ -15,7 +15,7 @@ Initialize it with the bar you want. For me, I want a bar that shows 12% with 50
 
     myXpBar = new BarBuilder(12, 50).build;
     
-It will make this: ![Image of result](https://github.com/Ariouz/BarBuilder/edit/master/Screenshot_1.png)
+It will make this: ![Image of result](https://raw.githubusercontent.com/Ariouz/BarBuilder/master/Screenshot_1.png)
     
 Don't forget to use build() methods at the end.
 You can also change the colors, the caracter, the size of bar.
