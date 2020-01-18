@@ -4,7 +4,9 @@
 
 BarBuilder is a class that help you to make bars, like  Xp bars.
 Exemple: 10% of 20 = 2 are green and 18 are red
--> in code this is: new BarBuilder(10, 20).build();
+-> in code this is: 
+  
+    new BarBuilder(10, 20).build();
 
 ## **How to make a basic XP bar ?
 Create a String wich the bar you want to have.
