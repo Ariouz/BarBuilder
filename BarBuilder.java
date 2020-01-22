@@ -1,12 +1,14 @@
-package fr.cloudsky.lobby.manager;
+package fr.ariouz.barbuilder;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
+
 
 /**
  * @author Ariouz
  * @version 1.0
  * This class help you to create a bar, like an xp bar
- * Exemple: 10% of 20 = 2 are green and 18 are red
  *
  * Copyright Ariouz 2020
  */
@@ -78,6 +80,17 @@ public class BarBuilder {
     }
 
     /**
+     * set the percent of the bar (if you want to make animations)
+     * @param percent
+     * @return
+     */
+
+    public BarBuilder setPercent(double percent){
+        this.percent = percent;
+        return this;
+    }
+
+    /**
      * set the full color (default is green)
      * @param color
      */
@@ -118,8 +131,157 @@ public class BarBuilder {
     }
 
     /**
+     * Return the current percent of the bar
+     * @return
+     */
+
+    public double getPercent(){
+        return this.percent;
+    }
+
+    /**
+     * Return the current percent of the bar
+     * @param bar
+     * @return
+     */
+
+    public double getPercent(BarBuilder bar){
+        return bar.getPercent();
+    }
+
+    /**
+     * Return the current size of the bar
+     * @return
+     */
+
+    public int getSize(){
+        return this.sizeOfBar;
+    }
+
+    /**
+     * Return the current size of the bar
+     * @param bar
+     * @return
+     */
+
+    public int getSize(BarBuilder bar){
+        return bar.getSize();
+    }
+
+    /**
+     * Return the current full color
+     * @return
+     */
+
+    public ChatColor getFullColor(){
+        return this.full;
+    }
+
+    /**
+     * Return the current full color
+     * @return
+     */
+
+    public ChatColor getFullColor(BarBuilder bar){
+        return bar.getFullColor();
+    }
+
+    /**
+     * Return the current empty color
+     * @return
+     */
+
+    public ChatColor getEmptyColor(){
+        return this.empty;
+    }
+
+    /**
+     * Return the current empty color
+     * @return
+     */
+
+    public ChatColor getEmptyColor(BarBuilder bar){
+        return bar.getEmptyColor();
+    }
+
+    /**
+     * Return the bar caracter (default is |)
+     * @return
+     */
+
+    public char getCaracter() {
+        return this.caracter;
+    }
+
+    /**
+     * Return the bar caracter (default is |)
+     * @return
+     */
+
+    public char getCaracter(BarBuilder bar) {
+        return bar.getCaracter();
+    }
+
+    /**
+     * Send the bar in the chat to the player
+     * @param player
+     */
+
+    public void sendToPlayer(Player player){
+        player.sendMessage(this.build());
+    }
+
+    /**
+     * Send the bar in the chat to the player
+     * @param player
+     * @param bar
+     */
+
+    public void sendToPlayer(Player player, BarBuilder bar){
+        player.sendMessage(bar.build());
+    }
+
+    /**
+     * Send the bar to the console
+     */
+
+    public void sendToConsole(){
+        Bukkit.getConsoleSender().sendMessage(this.build());
+    }
+
+    /**
+     * Send the bar to the console
+     * @param bar
+     */
+
+    public void sendToConsole(BarBuilder bar){
+        Bukkit.getConsoleSender().sendMessage(bar.build());
+    }
+
+    /**
+     * Send the bar to all online players
+     */
+
+    public void sendToAllPlayers(){
+        for(Player players : Bukkit.getOnlinePlayers()){
+            sendToPlayer(players);
+        }
+    }
+
+    /**
+     * Send the bar to all online players
+     * @param bar
+     */
+
+    public void sendToAllPlayers(BarBuilder bar){
+        for(Player players : Bukkit.getOnlinePlayers()){
+            sendToPlayer(players, bar);
+        }
+    }
+
+    /**
      * Build the bar. Use this method after all ones !
-     * @return build.toStirng();
+     * @return build.toString();
      */
 
     public String build(){
