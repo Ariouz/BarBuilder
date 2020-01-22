@@ -1,5 +1,9 @@
 # BarBuilder
 
+## Last updates: 
+### Added:
+    setPercent() getPercent(), getPercent(BarBuilder), getFullColor(), getFullColor(BarBuilder), getEmptyColor(), getEmptyColor(BarBuilder), getCaracter(), getCaracter(BarBuilder), getSize(), getSize(BarBuilder), sendToPlayer(), sendToPlayer(BarBuilder), sendToAllPlayers(), sendToAllPlayers(BarBuilder), sendToConsole(), sendToConsole(BarBuilder)
+
 ## **What is that ?**
 
 BarBuilder is a class that help you to make bars, looking like XP bars.
