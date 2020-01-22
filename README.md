@@ -2,7 +2,7 @@
 
 ## Last updates: 
 ### Added:
-    setPercent() getPercent(), getPercent(BarBuilder), getFullColor(), getFullColor(BarBuilder), getEmptyColor(), getEmptyColor(BarBuilder), getCaracter(), getCaracter(BarBuilder), getSize(), getSize(BarBuilder), sendToPlayer(), sendToPlayer(BarBuilder), sendToAllPlayers(), sendToAllPlayers(BarBuilder), sendToConsole(), sendToConsole(BarBuilder)
+setPercent() getPercent(), getPercent(BarBuilder), getFullColor(), getFullColor(BarBuilder), getEmptyColor(), getEmptyColor(BarBuilder), getCaracter(), getCaracter(BarBuilder), getSize(), getSize(BarBuilder), sendToPlayer(), sendToPlayer(BarBuilder), sendToAllPlayers(), sendToAllPlayers(BarBuilder), sendToConsole(), sendToConsole(BarBuilder)
 
 ## **What is that ?**
 
