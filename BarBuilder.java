@@ -47,38 +47,38 @@ public class BarBuilder {
      * It will set the percent of green bars, the size of bar and the caratcter (default is '|' )
      * @param percent
      * @param sizeOfBar
-     * @param caracter
+     * @param character
      */
 
-    public BarBuilder(double percent, int sizeOfBar, char caracter){
+    public BarBuilder(double percent, int sizeOfBar, char character){
         this.percent = percent;
         this.sizeOfBar = sizeOfBar;
-        this.character = caracter;
+        this.character = character;
     }
 
     /**
      * It will set the percent of green bars and the caracter (default is '|' )
      * @param percent
-     * @param caracter
+     * @param character
      */
 
-    public BarBuilder(double percent, char caracter){
+    public BarBuilder(double percent, char character){
         this.percent = percent;
-        this.character = caracter;
+        this.character = character;
     }
 
     /**
      * It will set the percent of green bars, the size of the total bar, the caracter, the full color (default is green) and the empty color (default id red)
      * @param percent
      * @param sizeOfBar
-     * @param caracter
+     * @param character
      * @param full
      * @param empty
      */
 
-    public BarBuilder(double percent, int sizeOfBar, char caracter, ChatColor full, ChatColor empty){
+    public BarBuilder(double percent, int sizeOfBar, char character, ChatColor full, ChatColor empty){
         this.percent = percent;
-        this.character = caracter;
+        this.character = character;
     }
 
     /**
@@ -124,11 +124,11 @@ public class BarBuilder {
 
     /**
      * set the caracter of bar (default is '|')
-     * @param caracter
+     * @param character
      */
 
-    public BarBuilder setCaracter(char caracter){
-        this.character = caracter;
+    public BarBuilder setCharacter(char character){
+        this.character = character;
         return this;
     }
 
@@ -207,7 +207,7 @@ public class BarBuilder {
     }
 
     /**
-     * Return the bar caracter (default is |)
+     * Return the bar character (default is |)
      * @return
      */
 
@@ -216,7 +216,7 @@ public class BarBuilder {
     }
 
     /**
-     * Return the bar caracter (default is |)
+     * Return the bar character (default is |)
      * @return
      */
 
@@ -253,24 +253,36 @@ public class BarBuilder {
      * @param sense
      */
 
-    public void setSense(Sense sense) {
+    public BarBuilder setSense(Sense sense) {
         this.sense = sense;
+        return this;
     }
+
+    /**
+     * Invert the sense of the bar (red at the beggining and green at the end)
+     * @return barBuilder
+     */
 
     public BarBuilder invert(){
         if (this.getSense().equals(Sense.REVERSE)) {
-            this.setSense(Sense.NORMAL);
+            this.switchSense(Sense.NORMAL);
         } else {
-            this.setSense(Sense.REVERSE);
+            this.switchSense(Sense.REVERSE);
         }
         return this;
     }
 
+    /**
+     * Invert the sense of the bar (red at the beggining and green at the end)
+     * @return barBuilder
+     * @param barBuilder 
+     */
+
     public BarBuilder invert(BarBuilder barBuilder){
         if (barBuilder.getSense().equals(Sense.REVERSE)) {
-            barBuilder.setSense(Sense.NORMAL);
+            barBuilder.switchSense(Sense.NORMAL);
         } else {
-            barBuilder.setSense(Sense.REVERSE);
+            barBuilder.switchSense(Sense.REVERSE);
         }
         return barBuilder;
     }
@@ -290,7 +302,7 @@ public class BarBuilder {
      * @param sense
      */
 
-    public BarBuilder switchSense(Sense sense){
+    private BarBuilder switchSense(Sense sense){
         if(this.getSense() != sense){
             this.switchColors();
         }
@@ -306,7 +318,7 @@ public class BarBuilder {
      * @param barBuilder
      */
 
-    public BarBuilder switchSense(Sense sense, BarBuilder barBuilder){
+    private BarBuilder switchSense(Sense sense, BarBuilder barBuilder){
         if(barBuilder.getSense() != sense){
             barBuilder.switchColors();
         }
