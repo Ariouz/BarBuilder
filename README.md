@@ -1,8 +1,8 @@
 # BarBuilder
 
 ## Last updates: 
-### Added:
-setPercent() getPercent(), getPercent(BarBuilder), getFullColor(), getFullColor(BarBuilder), getEmptyColor(), getEmptyColor(BarBuilder), getCaracter(), getCaracter(BarBuilder), getSize(), getSize(BarBuilder), sendToPlayer(), sendToPlayer(BarBuilder), sendToAllPlayers(), sendToAllPlayers(BarBuilder), sendToConsole(), sendToConsole(BarBuilder)
+### v1.0.1 Update:
+  added invert(), switchColors() and switchSense() methods.
 
 ## **What is that ?**
 
@@ -60,5 +60,43 @@ Preview: ![Image of result](https://raw.githubusercontent.com/Ariouz/BarBuilder/
 
     myXpBar = new BarBuilder(12).setCaracter(':').setFullColor(ChatColor.YELLOW).setEmptyColor(ChatColor.GOLD).setSize(50).build;
 Preview: ![Image of result](https://raw.githubusercontent.com/Ariouz/BarBuilder/master/imgs/6.png)
+
+### The switchColors() method:
+This method will switch the fullColor with the emptyColor, exemple in code:
+      
+    myXpBar = new BarBuilder(80).switchColors().build();
+Preview:  ![Image of result](https://raw.githubusercontent.com/Ariouz/BarBuilder/master/imgs/7.png)
+
+### The switchSense(Sense) method:
+This method will change the sense of the bazar (default is Sense.NORMAL), exemple in code with Sense.REVERSE:
+
+    myXpBar = new BarBuilder(80).switchSense(BarBuilder.Sense.REVERSE).build();
+Preview: ![Image of result](https://raw.githubusercontent.com/Ariouz/BarBuilder/master/imgs/8.png)
+
+### The invert() method:
+This method will invert the Sense and the colors of the bar, nice if you want to make a countdown:
+
+    myXpBar = new BarBuilder(80).invert().build();
+  OR
+    myXpBar = new BarBuilder(80).switchColors().switchSense(BarBuilder.Sense.REVERSE).build()
+Preview: ![Image of result](https://raw.githubusercontent.com/Ariouz/BarBuilder/master/imgs/9.png)
+As you can see, the two differents line of code do the same thing.
+
+## Getters
+
+### getPercent()
+Return the percent of completed.
+
+### getFullColor()
+Return the "completed" color (default is Green).
+
+### getEmptyColor()
+Return the "non-completed" color (default is Red).
+
+### getCharacter()
+Return the character of the bar (default is '|').
+
+### getSize()
+Return the size of the bar (number of characters).
 
 ## Hope you enjoy my class, if you have any request or idea ask me.
