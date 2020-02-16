@@ -71,7 +71,7 @@ Preview:  ![Image of result](https://raw.githubusercontent.com/Ariouz/BarBuilder
 This method will change the sense of the bazar (default is Sense.NORMAL), exemple in code with Sense.REVERSE:
 
     myXpBar = new BarBuilder(80).switchSense(BarBuilder.Sense.REVERSE).build();
-Preview: ![Image of result](https://raw.githubusercontent.com/Ariouz/BarBuilder/master/imgs/8.png)
+Preview: ![Image of result](https://github.com/Ariouz/BarBuilder/blob/master/imgs/8.png)
 
 ### The invert() method:
 This method will invert the Sense and the colors of the bar, nice if you want to make a countdown:
