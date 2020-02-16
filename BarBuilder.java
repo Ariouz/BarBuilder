@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
+import java.util.Arrays;
 
 /**
  * @author Ariouz
@@ -19,7 +20,8 @@ public class BarBuilder {
     private ChatColor empty = ChatColor.RED;
     private double percent;
     private int sizeOfBar = 100;
-    private char caracter = '|';
+    private char character = '|';
+    private Sense sense = Sense.NORMAL;
 
     /**
      * Default method, it will set the percent of green bars
@@ -51,7 +53,7 @@ public class BarBuilder {
     public BarBuilder(double percent, int sizeOfBar, char caracter){
         this.percent = percent;
         this.sizeOfBar = sizeOfBar;
-        this.caracter = caracter;
+        this.character = caracter;
     }
 
     /**
@@ -62,7 +64,7 @@ public class BarBuilder {
 
     public BarBuilder(double percent, char caracter){
         this.percent = percent;
-        this.caracter = caracter;
+        this.character = caracter;
     }
 
     /**
@@ -76,7 +78,7 @@ public class BarBuilder {
 
     public BarBuilder(double percent, int sizeOfBar, char caracter, ChatColor full, ChatColor empty){
         this.percent = percent;
-        this.caracter = caracter;
+        this.character = caracter;
     }
 
     /**
@@ -126,7 +128,7 @@ public class BarBuilder {
      */
 
     public BarBuilder setCaracter(char caracter){
-        this.caracter = caracter;
+        this.character = caracter;
         return this;
     }
 
@@ -209,8 +211,8 @@ public class BarBuilder {
      * @return
      */
 
-    public char getCaracter() {
-        return this.caracter;
+    public char getCharacter() {
+        return this.character;
     }
 
     /**
@@ -218,8 +220,98 @@ public class BarBuilder {
      * @return
      */
 
-    public char getCaracter(BarBuilder bar) {
-        return bar.getCaracter();
+    public char getCharacter(BarBuilder bar) {
+        return bar.getCharacter();
+    }
+
+    /**
+     * Switch the full & the empty colors of the bar
+     * @return
+     */
+
+    public BarBuilder switchColors(){
+        ChatColor colorSwi = this.empty;
+        this.empty = this.full;
+        this.full = colorSwi;
+        return this;
+    }
+
+    /**
+     * Switch the full & the empty colors of the bar
+     * @return barBuilder
+     */
+
+    public BarBuilder switchColors(BarBuilder barBuilder){
+        ChatColor colorSwi = barBuilder.getEmptyColor();
+        barBuilder.setEmptyColor(barBuilder.getFullColor());
+        barBuilder.setFullColor(colorSwi);
+        return barBuilder;
+    }
+
+    /**
+     * Set the sense of the bar ( Sense.NORMAL Or Sense.REVERSE )
+     * @param sense
+     */
+
+    public void setSense(Sense sense) {
+        this.sense = sense;
+    }
+
+    public BarBuilder invert(){
+        if (this.getSense().equals(Sense.REVERSE)) {
+            this.setSense(Sense.NORMAL);
+        } else {
+            this.setSense(Sense.REVERSE);
+        }
+        return this;
+    }
+
+    public BarBuilder invert(BarBuilder barBuilder){
+        if (barBuilder.getSense().equals(Sense.REVERSE)) {
+            barBuilder.setSense(Sense.NORMAL);
+        } else {
+            barBuilder.setSense(Sense.REVERSE);
+        }
+        return barBuilder;
+    }
+
+    /**
+     * Get the sense of the bar (Normal/Reversed)
+     * @return
+     */
+
+    public Sense getSense() {
+        return sense;
+    }
+
+    /**
+     * Change the sense of the bar (normal & reversed)
+     * @return barBuilder
+     * @param sense
+     */
+
+    public BarBuilder switchSense(Sense sense){
+        if(this.getSense() != sense){
+            this.switchColors();
+        }
+        this.sense = sense;
+        this.percent = 100 - this.percent;
+        return this;
+    }
+
+    /**
+     * Change the sense of the bar (normal & reversed)
+     * @return
+     * @param sense
+     * @param barBuilder
+     */
+
+    public BarBuilder switchSense(Sense sense, BarBuilder barBuilder){
+        if(barBuilder.getSense() != sense){
+            barBuilder.switchColors();
+        }
+        barBuilder.switchSense(sense);
+        return barBuilder;
     }
 
     /**
@@ -285,18 +377,52 @@ public class BarBuilder {
      */
 
     public String build(){
-        this.percent /= 100;
-
-        long completed = Math.round(this.sizeOfBar*this.percent);
-
+        long completed = Math.round(this.sizeOfBar * (this.percent / 100));
+        /*if(this.getSense().equals(Sense.REVERSE)){
+            completed = Math.round(this.sizeOfBar);
+        }*/
         StringBuilder build = new StringBuilder();
-        build.append(this.full);
+        build.append(this.getFullColor());
 
         for(int i = 0; i < sizeOfBar; i++){
-            build.append(i == completed ? this.empty : "").append(this.caracter);
+           /* if(this.getSense().equals(Sense.REVERSE)){
+                build.append(i == completed ? this.getEmptyColor() : "").append(this.getCharacter());
+            }else{*/
+                build.append(i == completed ? this.getEmptyColor() : "").append(this.getCharacter());
+            //}
         }
 
         return build.toString();
+    }
+
+    public enum Sense{
+        NORMAL(0),
+        REVERSE(1);
+
+        private int id;
+
+        Sense(int id){
+            this.id = id;
+        }
+
+        /**
+         * Get the id of a sense
+         * @return
+         */
+
+        public int getId() {
+            return id;
+        }
+
+        /**
+         * Get enum value by the sense id (0 & 1)
+         * @param id
+         * @return
+         */
+
+        public static Sense getById(int id){
+            return Arrays.stream(values()).filter(r -> r.getId() == id).findFirst().orElse(null);
+        }
     }
 
 }
